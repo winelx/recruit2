@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">recruit</string>
+    <string name="icon_home">\ue61e</string>
+    <string name="icon_message">\ue607</string>
+    <string name="icon_video">\ue626</string>
+    <string name="icon_user">\ue612</string>
+    <string name="home">首页</string>
+</resources>

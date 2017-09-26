@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/logup_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/login_user"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/editext_style"
+            android:hint="请输入用户名"
+            android:textColor="@color/login_text"
+            android:textSize="16sp"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/login_passWord"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@id/login_user"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/editext_style"
+            android:hint="请输入密码"
+            android:textColor="@color/login_text"
+            android:textSize="16sp"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/login_checkbox"
+            android:layout_width="26dp"
+            android:layout_height="20dp"
+            android:layout_alignStart="@+id/login_passWord"
+            android:layout_below="@+id/login_passWord"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="5dp"
+            android:theme="@style/MyCheckBox"/>
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/login_checkbox"
+            android:layout_alignBottom="@+id/login_checkbox"
+            android:layout_toEndOf="@+id/login_checkbox"
+            android:text="用户协议"
+            android:textColor="@color/login_text"
+            android:textSize="12sp"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/logup"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_checkbox"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_style3"
+            android:gravity="center"
+            android:text="登陆"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/login_ID_forget"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_below="@+id/logup_user"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="忘记密码"
+        android:textColor="@color/login_text"
+        android:textSize="15sp"/>
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/logup_user"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:text="忘记密码"
+        android:textColor="@color/login_text"
+        android:textSize="15sp"/>
+</RelativeLayout>
