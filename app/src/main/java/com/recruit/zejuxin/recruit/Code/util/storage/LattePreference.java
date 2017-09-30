@@ -7,11 +7,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.recruit.zejuxin.recruit.Code.app.latte;
 
-
-/**
- * Created by 傅令杰 on 2017/4/22
- */
-
 public final class LattePreference {
 
     /**

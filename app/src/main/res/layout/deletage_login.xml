@@ -7,36 +7,38 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#32BCAD"
+        android:background="@color/Writer"
         app:contentInsetStart="0dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/login_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="{fa-times}"
+            android:textSize="27sp"/>
 
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:text="登陆"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"/>
-        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/login_tablayou"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="40dp"
+        app:tabIndicatorColor="@color/theme"
+        app:tabTextAppearance="@style/TabLayoutText"
+        app:tabTextColor="@color/login_text"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/login_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

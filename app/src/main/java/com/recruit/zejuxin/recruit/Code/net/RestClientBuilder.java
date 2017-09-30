@@ -32,9 +32,10 @@ public class RestClientBuilder {
     private Context mContext;
     private LoaderStyle mLoaderStyle;
 
-    private String mDownloadDir=null;
-    private String mExtension=null;
-    private String mName=null;
+    private String mDownloadDir = null;
+    private String mExtension = null;
+    private String mName = null;
+
     RestClientBuilder() {
     }
 
@@ -53,10 +54,12 @@ public class RestClientBuilder {
         PARAMS.putAll(params);
         return this;
     }
+
     public final RestClientBuilder params(String key, Object value) {
         PARAMS.put(key, value);
         return this;
     }
+
     public final RestClientBuilder Request(String key, Object object) {
         this.PARAMS.put(key, object);
         return this;

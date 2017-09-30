@@ -23,7 +23,7 @@
 
                 <com.joanzapata.iconify.widget.IconTextView
                     android:id="@+id/home_fragment_Positioning"
-                    android:layout_width="55dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="7dp"
@@ -31,7 +31,7 @@
                     android:gravity="center"
                     android:text="贵阳 {fa-caret-down #f9f8f8 25sp}"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp"/>
+                    android:textSize="17sp"/>
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/home_fragment_search"
@@ -51,7 +51,7 @@
                 android:layout_marginRight="25dp"
                 android:text="{fa-search #626262}"
                 android:textColor="@android:color/black"
-                android:textSize="25sp"/>
+                android:textSize="23sp"/>
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -60,9 +60,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/home_recycler"
+        <ListView
+            android:id="@+id/home_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
     </android.support.v4.widget.SwipeRefreshLayout>
+
 </LinearLayout>

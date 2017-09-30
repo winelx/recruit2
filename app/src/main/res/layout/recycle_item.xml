@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/item_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="淘宝美工"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp"/>
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/item_wages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3-6k"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="22sp"
+        tools:layout_editor_absoluteX="326dp"
+        tools:layout_editor_absoluteY="16dp"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9月19日"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="302dp"
+        tools:layout_editor_absoluteY="155dp"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/item_conditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="贵阳 | 南明区 | 2-3年 | 本科"
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="52dp"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/item_company_image"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="#1c388a"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="122dp"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/item_company_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="默默电商"
+        android:textColor="@color/login_text"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="122dp"/>
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/item_company_welfare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="五险一金"
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="86dp"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/item_company_welfare2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="周末双休"
+        android:textColor="@color/login_text"
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="85dp"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/item_company_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50-150人 | 国企资金"
+        android:textColor="@color/login_text"
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="159dp"/>
+</android.support.constraint.ConstraintLayout>

@@ -5,8 +5,7 @@ package com.recruit.zejuxin.recruit.Code.delegate;
  */
 
 public abstract class LatteDelegate extends PermissionCheckerDelegate {
-    public <T extends LatteDelegate>
-    T getParentDegate() {
+    public <T extends LatteDelegate> T getParentDegate() {
         return (T) getParentFragment();
     }
 }

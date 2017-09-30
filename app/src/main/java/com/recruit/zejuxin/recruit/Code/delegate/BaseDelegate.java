@@ -16,20 +16,20 @@ import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 /**
  * Created by 10942 on 2017/9/25 0025.
  */
-public  abstract class BaseDelegate extends SwipeBackFragment {
+public abstract class BaseDelegate extends SwipeBackFragment {
     //注意Object的导包，导入object，而不是Util
     @SuppressWarnings("SpellCheckingInspection")
     public abstract Object setLayout();
 
     private Unbinder mUnbinder = null;
-
+    private static View rootView = null;
     public abstract void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView);
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = null;
+
         if (setLayout() instanceof Integer) {
             rootView = inflater.inflate((int) setLayout(), container, false);
         } else if (setLayout() instanceof View) {
@@ -52,6 +52,7 @@ public  abstract class BaseDelegate extends SwipeBackFragment {
             mUnbinder.unbind();
         }
     }
+
     public final ProxyActivity getProxyActivity() {
         return (ProxyActivity) _mActivity;
     }

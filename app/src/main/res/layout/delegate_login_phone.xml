@@ -47,45 +47,43 @@
             android:text="获取验证码"
             android:textColor="@color/login_text"/>
 
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/login_checkbox"
+            android:layout_width="26dp"
+            android:layout_height="20dp"
+            android:layout_alignStart="@+id/logup_user_on"
+            android:layout_below="@+id/logup_user_code"
+            android:layout_marginTop="10dp"
+            android:theme="@style/MyCheckBox"/>
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/login_checkbox"
+            android:layout_alignBottom="@+id/login_checkbox"
+            android:layout_toEndOf="@+id/login_checkbox"
+            android:text="用户协议"
+            android:textColor="@color/login_text"
+            android:textSize="12sp"/>
+
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/logup_user_on"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@id/logup_user_code"
+            android:layout_below="@+id/login_checkbox"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/button_style3"
             android:gravity="center"
             android:text="登陆"
             android:textColor="@android:color/white"
-            android:textSize="20sp"/>
+            android:textSize="18sp"
+            />
     </RelativeLayout>
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/login_ID_forget"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_below="@+id/logup_phone"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:text="忘记密码"
-        android:textColor="@color/login_text"
-        android:textSize="15sp"/>
-
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/logup_phone"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="6dp"
-        android:gravity="center"
-        android:text="忘记密码"
-        android:textColor="@color/login_text"
-        android:textSize="15sp"/>
 
 </RelativeLayout>

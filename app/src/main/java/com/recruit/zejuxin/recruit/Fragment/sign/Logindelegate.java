@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.AppCompatTextView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -18,12 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by 10942 on 2017/9/26 0026.
  */
 
-public class Logindelegate extends LatteDelegate {
+public class Logindelegate extends LatteDelegate implements View.OnKeyListener {
     @BindView(R2.id.login_tablayou)
     TabLayout tabLayout;
     @BindView(R2.id.login_viewpager)
@@ -31,6 +34,12 @@ public class Logindelegate extends LatteDelegate {
     private List<View> viewList;//把需要滑动的页卡添加到这个list中
     private View view1, view2;//需要滑动的页卡
     private List<String> titleList;//viewpager的标题
+    private final static Logindelegate login = new Logindelegate();
+
+    @OnClick(R2.id.login_icon)
+    void remove() {
+        _mActivity.finish();
+    }
 
     @Override
     public Object setLayout() {
@@ -40,6 +49,18 @@ public class Logindelegate extends LatteDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         initdata();
+        newdata();
+    }
+
+
+    private void newdata() {
+        AppCompatTextView newfoget = (AppCompatTextView) view1.findViewById(R.id.login_new);
+        newfoget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
 
@@ -58,5 +79,12 @@ public class Logindelegate extends LatteDelegate {
         viewPager.setAdapter(mAdapter);//给ViewPager设置适配器
         tabLayout.setupWithViewPager(viewPager);//将TabLayout和ViewPager关联起来。
         tabLayout.setTabsFromPagerAdapter(mAdapter);//给Tabs设置适配器
+    }
+
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+        return true;
     }
 }
