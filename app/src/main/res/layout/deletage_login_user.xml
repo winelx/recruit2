@@ -1,144 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/login_user"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="40dp"
-        android:gravity="center_vertical"
-        android:hint="姓名"
-        android:inputType="textPersonName"
-        android:textColor="@color/login_text"
-        android:textColorHint="@color/login_text"/>
-
-    <RelativeLayout
-        android:id="@+id/login_passWord"
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login_user">
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="56dp">
+
 
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/login_edit_user"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="用户名/密码"
+            android:paddingLeft="10dp"
+            android:textColor="@color/login_text"
+            android:textColorHint="@color/login_editext"
+            android:theme="@style/MyEditText"
+            tools:ignore="HardcodedText"/>
+
+        <!--密码-->
+        <RelativeLayout
+            android:id="@+id/one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:hint="请输入密码"
-            android:inputType="textPassword"
-            android:textColor="#000000"
-            android:textColorHint="#55000000"
-            android:textSize="20sp"/>
+            android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/cbDisplayPassword"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:button="@drawable/editext_box"
-            android:checked="false"/>
-    </RelativeLayout>
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/login_edit_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_weight="8"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:textColor="@color/login_text"
+                android:textColorHint="@color/login_editext"
+                android:theme="@style/MyEditText"
+                tools:ignore="HardcodedText"/>
 
-    <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/login_checkbox"
-        android:layout_width="26dp"
-        android:layout_height="20dp"
-        android:layout_alignStart="@+id/logup"
-        android:layout_below="@+id/login_passWord"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:theme="@style/MyCheckBox"/>
-
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/login_checkbox"
-        android:layout_alignBottom="@+id/login_checkbox"
-        android:layout_toEndOf="@+id/login_checkbox"
-        android:text="用户协议"
-        android:textColor="@color/login_text"
-        android:textSize="12sp"/>
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/logup"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/login_checkbox"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/button_style3"
-        android:gravity="center"
-        android:text="登陆"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"/>
+            <CheckBox
+                android:id="@+id/login_text_boolean"
+                style="@style/CustomCheckboxTheme"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/login_editext"/>
+        </RelativeLayout>
 
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/login_ID_forget"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_below="@+id/logup"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="忘记密码"
-        android:textColor="@color/login_text"
-        android:textSize="15sp"/>
-
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/login_new"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/login_ID_forget"
-        android:layout_alignBottom="@+id/login_ID_forget"
-        android:layout_alignEnd="@+id/logup"
-        android:layout_marginEnd="14dp"
-        android:gravity="center"
-        android:text="注册账号"
-        android:textColor="@color/login_text"
-        android:textSize="15sp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login_ID_forget"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal">
-
-        <com.joanzapata.iconify.widget.IconTextView
-            android:id="@+id/iconTextView2"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="{fa-qq}"
-            android:textColor="@color/login_text"
-            android:textSize="40sp"/>
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
-        <com.joanzapata.iconify.widget.IconTextView
-            android:id="@+id/iconTextView"
-            android:layout_width="0dp"
+            <CheckBox
+                android:id="@+id/login_checkbox"
+                android:layout_width="26dp"
+                android:layout_height="20dp"
+                android:layout_alignStart="@+id/logup"
+                android:layout_below="@+id/login_passWord"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="10dp"
+                android:theme="@style/MyCheckBox"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="用户协议"
+                android:textColor="@color/login_text"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/login_button_login"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_style3"
             android:gravity="center"
-            android:text="{fa-weixin}"
-            android:textColor="@color/login_text"
-            android:textSize="40sp"/>
-    </LinearLayout>
+            android:padding="12dp"
+            android:text="登陆"
+            android:textColor="@android:color/white"
+            tools:ignore="HardcodedText"/>
 
-</RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/login_text_forget"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:text="忘记密码"
+                android:textColor="@color/login_text"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/login_text_new"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="注册账号"
+                android:textColor="@color/login_text"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/log_in_qq"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="{fa-qq 40sp}"
+                android:textColor="@color/login_editext"/>
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/log_in_weixin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="{fa-weixin 40sp}"
+                android:textColor="@color/login_editext"
+                />
+
+
+        </LinearLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
+</android.support.v7.widget.LinearLayoutCompat>

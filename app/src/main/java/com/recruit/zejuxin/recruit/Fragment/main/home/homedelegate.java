@@ -60,8 +60,8 @@ public class homedelegate extends BottomItemDalegate implements SwipeRefreshLayo
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         initData();
-      //  initBanner();
-      //  intiet();
+        //  initBanner();
+        //  intiet();
         mAdapter = new listAdapter(latte.geteApplication(), mHomeBeen);
         recycler.setAdapter(mAdapter);
 
@@ -89,8 +89,6 @@ public class homedelegate extends BottomItemDalegate implements SwipeRefreshLayo
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
                     }
                 })
                 .error(new IError() {
