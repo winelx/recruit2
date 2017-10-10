@@ -21,6 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="手机号"
+            android:inputType="number"
+            android:maxLength="11"
             android:paddingLeft="20dp"
             android:textColor="@color/login_text"
             android:textColorHint="@color/login_editext"
@@ -50,16 +52,18 @@
                 android:theme="@style/MyEditText"
                 tools:ignore="HardcodedText"/>
 
-            <Button
-                android:id="@+id/login_phone_text_boolean"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_alignBaseline="@+id/login__phone_edit_password"
-                android:layout_alignBottom="@+id/login__phone_edit_password"
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/login_phone_text_yzm"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
                 android:layout_alignParentEnd="true"
-                android:background="@color/theme"
-                android:text="验证码"
-                android:textColor="@color/Writer"/>
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_identify_code_normal"
+                android:gravity="center"
+                android:text="获取验证码"
+                android:textColor="@color/Writer"
+                android:textSize="12sp"/>
         </RelativeLayout>
 
         <LinearLayout

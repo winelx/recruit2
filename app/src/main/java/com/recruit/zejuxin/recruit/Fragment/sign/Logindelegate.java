@@ -12,7 +12,6 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -26,7 +25,8 @@ import com.recruit.zejuxin.recruit.Code.net.RestClient;
 import com.recruit.zejuxin.recruit.Code.net.callBack.IError;
 import com.recruit.zejuxin.recruit.Code.net.callBack.ISuccess;
 import com.recruit.zejuxin.recruit.Code.util.Request;
-import com.recruit.zejuxin.recruit.Code.util.Timer.TimeCount;
+import com.recruit.zejuxin.recruit.Code.util.Timer.CountDownTimerUtils;
+import com.recruit.zejuxin.recruit.Code.util.Utils;
 import com.recruit.zejuxin.recruit.Fragment.main.ExampleDelegate;
 import com.recruit.zejuxin.recruit.R;
 import com.recruit.zejuxin.recruit.R2;
@@ -42,6 +42,7 @@ import butterknife.OnClick;
 
 /**
  * Created by 10942 on 2017/9/26
+ * 登陆
  */
 
 public class Logindelegate extends LatteDelegate implements View.OnClickListener {
@@ -60,13 +61,14 @@ public class Logindelegate extends LatteDelegate implements View.OnClickListener
     private AppCompatTextView forget, newuser;
     private Context mContext;
     //手机
-    private EditText tle_phone, tle_password;
-    private Button validation;
+    private EditText tle_phone, tle_phone_code;
+    //用户
+    private String name, passwords, tle_number, tle_code;
+    private AppCompatButton validation;
     private CheckBox phone_checkBox;
     private TextView xieyi;
     private AppCompatButton logup;
     final ExampleDelegate Examp = new ExampleDelegate();
-    private TimeCount timeCount;
 
     @OnClick(R2.id.login_icon)
     void remove() {
@@ -90,7 +92,6 @@ public class Logindelegate extends LatteDelegate implements View.OnClickListener
      */
     private void initdata() {
         mContext = latte.geteApplication();
-
         LayoutInflater lf = LayoutInflater.from(latte.geteApplication());
         view1 = lf.inflate(R.layout.deletage_login_user, null);
         view2 = lf.inflate(R.layout.delegate_login_phone, null);
@@ -99,7 +100,7 @@ public class Logindelegate extends LatteDelegate implements View.OnClickListener
         viewList.add(view2);
         titleList = new ArrayList<String>();// 每个页面的Title数据
         titleList.add("账号登陆");
-        titleList.add("手机登陆");
+        titleList.add("短信登陆");
         tabLayout.setTabMode(TabLayout.MODE_FIXED);//设置tab模式，当前为系统默认模式
         MyPager mAdapter = new MyPager(latte.geteApplication(), viewList, titleList);
         viewPager.setAdapter(mAdapter);//给ViewPager设置适配器
@@ -150,13 +151,13 @@ public class Logindelegate extends LatteDelegate implements View.OnClickListener
         //手机号
         tle_phone = (EditText) view2.findViewById(R.id.login_phone_edit_user);
         //密码
-        tle_password = (EditText) view2.findViewById(R.id.login__phone_edit_password);
+        tle_phone_code = (EditText) view2.findViewById(R.id.login__phone_edit_password);
         //判断
         phone_checkBox = (CheckBox) view2.findViewById(R.id.login_phone_checkbox);
         //验证码
-        validation = (Button) view2.findViewById(R.id.login_phone_text_boolean);
+        validation = (AppCompatButton) view2.findViewById(R.id.login_phone_text_yzm);
         validation.setOnClickListener(this);
-        timeCount = new TimeCount(60000, 1000, validation);
+//        timeCount = new TimeCount(60000, 1000, validation);
         //协议
         xieyi = (TextView) view2.findViewById(R.id.login_phone_text);
         xieyi.setOnClickListener(this);
@@ -166,73 +167,30 @@ public class Logindelegate extends LatteDelegate implements View.OnClickListener
 
     }
 
+
     @Override
     public void onClick(View v) {
-        final String name = user.getText().toString();
-        final String passwords = password.getText().toString();
-        final String tle_number = tle_phone.getText().toString();
-        final String tle_pass = tle_password.getText().toString();
+        name = user.getText().toString();
+        passwords = password.getText().toString();
+        tle_number = tle_phone.getText().toString();
+        tle_code = tle_phone_code.getText().toString();
         switch (v.getId()) {
             case R.id.login_button_login://邮箱登陆
-                if (name.isEmpty()) {
-                    Toast.makeText(mContext, "用户名不能为空", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (passwords.isEmpty() || passwords.length() < 6) {
-                        Toast.makeText(mContext, "请填写至少6位数密码", Toast.LENGTH_SHORT).show();
-                    } else {
-                        if (checkBox.isChecked() != true) {
-                            Toast.makeText(mContext, "阅读并同意用户协议", Toast.LENGTH_SHORT).show();
-                        } else {
-                            //网络请求，地址url，参数params 成功回调success 失败回调error 请求方式 post
-                            RestClient.Builder()
-                                    .url(Request.userLogin)
-                                    .params("iphone", tle_number)
-                                    .params("passsword", tle_pass)
-                                    .success(new ISuccess() {
-                                        @Override
-                                        public void onSuccess(String msg) {
-                                            Log.i("msg", msg);
-                                            try {
-                                                jsonObject = new JSONObject(msg);
-                                                //获取到json数据中里的activity数组内容
-                                                String resultCode = jsonObject.getString("messager");
-                                                if (resultCode.equals("error")) {
-                                                    Toast.makeText(getActivity(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
-                                                } else {
-                                                    //有数据
-                                                    start(Examp);
-                                                }
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                            }
+                userlogin();
 
-                                        }
-                                    })
-                                    .error(new IError() {
-                                        @Override
-                                        public void OnError(int code, String msg) {
-                                            //Log.i("msg", msg);
-                                            Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .build()
-                                    .post();
-                        }
-                    }
-                    break;
-                }
+                break;
             case R.id.login_text_forget://忘记密码
                 Toast.makeText(getActivity(), "ssss", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.login_text_new://邮箱注册
+            case R.id.login_text_new://注册
                 final logUpdelegate delegate = new logUpdelegate();
                 start(delegate);
                 break;
-            case R.id.login_phone_button_login://手机登陆
+            case R.id.login_phone_button_login://短信登陆
                 if (tle_number.isEmpty()) {
                     Toast.makeText(mContext, "手机号不能为空", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (tle_pass.isEmpty() || tle_pass.length() < 6) {
+                    if (tle_code.isEmpty() || tle_code.length() != 4) {
                         Toast.makeText(mContext, "验证码不对", Toast.LENGTH_SHORT).show();
                     } else {
                         if (phone_checkBox.isChecked() != true) {
@@ -241,7 +199,7 @@ public class Logindelegate extends LatteDelegate implements View.OnClickListener
                             RestClient.Builder()
                                     .url("")
                                     .params("iphone", tle_number)
-                                    .params("passsword", tle_pass)
+                                    .params("passsword", tle_code)
                                     .success(new ISuccess() {
                                         @Override
                                         public void onSuccess(String msg) {
@@ -249,7 +207,6 @@ public class Logindelegate extends LatteDelegate implements View.OnClickListener
                                                 JSONObject jsonObject = new JSONObject(msg);
                                                 //获取到json数据中里的activity数组内容
                                                 String resultCode = jsonObject.getString("messager");
-
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
                                             }
@@ -271,31 +228,92 @@ public class Logindelegate extends LatteDelegate implements View.OnClickListener
                     }
                 }
                 break;
-            case R.id.login_phone_text_boolean://获取验证码
-                if (Utils.isFastClick()) {
-                    // 进行点击事件后的逻辑操作
-                    timeCount.start();
-                }
+            case R.id.login_phone_text_yzm://获取验证码
+                yamdata();
                 break;
             default:
                 break;
         }
     }
 
+    //用户登录
+    private void userlogin() {
 
-    public static class Utils {
-        // 两次点击按钮之间的点击间隔不能少于1000毫秒
-        private static final int MIN_CLICK_DELAY_TIME = 60000;
-        private static long lastClickTime;
+        if (name.isEmpty()) {
+            Toast.makeText(mContext, "用户名不能为空", Toast.LENGTH_SHORT).show();
+        } else {
+            if (passwords.isEmpty() || passwords.length() < 6) {
+                Toast.makeText(mContext, "请填写至少6位数密码", Toast.LENGTH_SHORT).show();
+            } else {
+                if (checkBox.isChecked() != true) {
+                    Toast.makeText(mContext, "阅读并同意用户协议", Toast.LENGTH_SHORT).show();
+                } else {
+                    //网络请求，地址url，参数params 成功回调success 失败回调error 请求方式 post
+                    RestClient.Builder()
+                            .url(Request.userLogin)
+                            .params("iphone", tle_number)
+                            .params("passsword", tle_code)
+                            .success(new ISuccess() {
+                                @Override
+                                public void onSuccess(String msg) {
+                                    Log.i("msg", msg);
+                                    try {
+                                        jsonObject = new JSONObject(msg);
+                                        //获取到json数据中里的activity数组内容
+                                        String resultCode = jsonObject.getString("messager");
+                                        if (resultCode.equals("error")) {
+                                            Toast.makeText(getActivity(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            //有数据
+                                            pop();
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
 
-        public static boolean isFastClick() {
-            boolean flag = false;
-            long curClickTime = System.currentTimeMillis();
-            if ((curClickTime - lastClickTime) >= MIN_CLICK_DELAY_TIME) {
-                flag = true;
+                                }
+                            })
+                            .error(new IError() {
+                                @Override
+                                public void OnError(int code, String msg) {
+                                    //Log.i("msg", msg);
+                                    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .build()
+                            .post();
+                }
             }
-            lastClickTime = curClickTime;
-            return flag;
         }
     }
+
+    //手机获取验证码
+    private void yamdata() {
+
+        String phone = tle_phone.getText().toString();
+        if (phone.isEmpty() || !Utils.isMobileNO(phone)) {
+            Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+        } else {
+            CountDownTimerUtils mCountDownTimerUtils = new CountDownTimerUtils(validation, 60000, 1000);
+            mCountDownTimerUtils.start();
+            RestClient.Builder()
+                    .url("")
+                    .params("phone", phone)
+                    .success(new ISuccess() {
+                        @Override
+                        public void onSuccess(String msg) {
+
+                        }
+                    })
+                    .error(new IError() {
+                        @Override
+                        public void OnError(int code, String msg) {
+
+                        }
+                    })
+                    .build()
+                    .get();
+        }
+    }
+
 }

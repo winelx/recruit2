@@ -10,4 +10,6 @@ public class Request {
     public static final String userLogin = networks + "userLogin/plogin.do";
     //获取验证码
     public static final String VERIFY = networks + "user/ipone.do";
+    //注册
+    public static final String LOGIN = networks + "userLogin/appregist.do";
 }

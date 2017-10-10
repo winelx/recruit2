@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-                                              xmlns:tools="http://schemas.android.com/tools"
-                                              android:layout_width="match_parent"
-                                              android:layout_height="match_parent"
-                                              android:orientation="vertical">
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <RelativeLayout
@@ -27,8 +28,7 @@
             android:gravity="center"
             android:text="注册"
             android:textColor="@color/login_text"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp"/>
     </RelativeLayout>
 
 
@@ -51,8 +51,11 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
                 android:hint="手机号"
+                android:inputType="number"
+                android:maxLength="11"
+                android:paddingLeft="10dp"
                 android:textColor="@color/login_text"
-                android:textColorHint="@color/login_text"
+                android:textColorHint="@color/login_editext"
                 android:textSize="15sp"
                 android:theme="@style/MyEditText"/>
 
@@ -66,8 +69,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:hint="验证码"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:paddingLeft="10dp"
                     android:textColor="@color/login_text"
-                    android:textColorHint="@color/login_text"
+                    android:textColorHint="@color/login_editext"
                     android:textSize="15sp"
                     android:theme="@style/MyEditText"/>
 
@@ -77,40 +83,69 @@
                     android:layout_height="35dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:background="@drawable/button_style3"
+                    android:background="@drawable/bg_identify_code_normal"
                     android:gravity="center"
                     android:text="获取验证码"
                     android:textColor="@color/Writer"
                     android:textSize="12sp"/>
             </RelativeLayout>
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/logup_password"
+            <!--密码-->
+            <RelativeLayout
+                android:id="@+id/one"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="15dp"
-                android:hint="密码"
-                android:textColor="@color/login_text"
-                android:textColorHint="@color/login_text"
-                android:textSize="15sp"
-                android:theme="@style/MyEditText"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/logup_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="8"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/login_text"
+                    android:textColorHint="@color/login_editext"
+                    android:textSize="15sp"
+                    android:theme="@style/MyEditText"
+                    tools:ignore="HardcodedText"/>
+
+                <CheckBox
+                    android:id="@+id/login_text_boolean"
+                    style="@style/CustomCheckboxTheme"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="15dp"
+                    android:textColor="@color/login_editext"/>
+            </RelativeLayout>
 
 
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/logup_passwords"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="15dp"
-                android:hint="重复密码"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_weight="8"
+                android:hint="确认密码"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
                 android:textColor="@color/login_text"
-                android:textColorHint="@color/login_text"
+                android:textColorHint="@color/login_editext"
                 android:textSize="15sp"
-                android:theme="@style/MyEditText"/>
+                android:theme="@style/MyEditText"
+                tools:ignore="HardcodedText"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,16 +34,11 @@ public class userDelegate extends BottomItemDalegate {
     @OnClick(R2.id.img)
     void Login() {
         getParentDegate().getSupportDelegate().start(delegate);
-        // .start(delegate);
-//        Intent Intent =new Intent(latte.geteApplication(), LoginActivity.class);
-//        startActivity(Intent);
-        Toast.makeText(getActivity(), "还没写界面", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public Object setLayout() {
         return R.layout.delegate_mine;
-
     }
 
     @Override
@@ -51,6 +47,7 @@ public class userDelegate extends BottomItemDalegate {
     }
 
     private void initData() {
-
+        Toast.makeText(getActivity(), "Data", Toast.LENGTH_SHORT).show();
+        Log.i("data", "onBind:");
     }
 }
